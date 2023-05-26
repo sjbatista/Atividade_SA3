@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "author": "Hugo Tomaselli Ribeiro",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -127.24, "left": -127.57, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 93.2,
+      "left": 243.29,
+      "attrs": { "color": "orange" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -1.58,
+      "left": 241.52,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 132.69,
+      "left": 158.04,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 29.63,
+      "left": 156.06,
+      "rotate": 180,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "esp:D13", "dht1:SDA", "green", [ "h0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "led2:A", "led1:A", "green", [ "v12.33", "h24.32", "v92.35" ] ],
+    [ "led1:C", "r1:1", "green", [ "v0" ] ],
+    [ "led2:C", "r2:1", "green", [ "v0" ] ],
+    [ "r1:2", "esp:GND.1", "green", [ "v0" ] ],
+    [ "r2:2", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led1:A", "esp:D5", "gold", [ "v-66.06", "h0.21" ] ],
+    [ "led2:A", "esp:D18", "blue", [ "v19.78", "h0.49" ] ]
+  ],
+  "dependencies": {}
+}
